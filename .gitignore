@@ -10,3 +10,7 @@
 "*.pyc"
 "db.sqlite3"
 "geckodriver.log"
+geckodriver.log
+db.sqlite3
+db.sqlite3 
+geckodriver.log
