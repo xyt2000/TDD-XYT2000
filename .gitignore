@@ -14,3 +14,5 @@ geckodriver.log
 db.sqlite3
 db.sqlite3 
 geckodriver.log
+__pycache__ 
+*.pyc 
