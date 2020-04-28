@@ -29,28 +29,30 @@ class NewVisitorTest(unittest.TestCase):#(1)
 		)
 		#she types "Buy peocock feathers" into a text box(Ediths hobby
 		#is tying fly-fishing lures)
-		inputbox.send_keys('Use peacock feathers to make a fly')
+		inputbox.send_keys('Buy peacock feathers')
 		#when she hits enter,the page updates,and now the page lists
 		#"1":Buy peocock feathers" as an item in a to-do list
 		inputbox.send_keys(Keys.ENTER)
 		time.sleep(1)
-		table = self.browser.find_element_by_id('id_list_table')
-		rows = table.find_elements_by_tag_name('tr')
+		self.check_for_row_in_list_table('1:Buy peacock feathers')
 		#self.assertTrue(
 		#	any(row.text == '1:Buy peacock feathers' for row in rows),
 		#	f"New to-do item did not appear in table. Contents were:\n{table.text}"
 		#)
-		self.check_for_row_in_list_table('1:Buy peacock feathers')
-		self.check_for_row_in_list_table('2:Use peacock feathers to make a fly')
+
 		#There is still a text box inviting her to add another item.She
 		#enters "use peocock feathers to make a fly"(Edith is very methodical)
-		self.fail('finish the test')
+		inputbox = self.browser.find_element_by_id('id_new_item')
+		inputbox.send_keys('Use peacock feathers to make a fly')
+		inputbox.send_keys(Keys.ENTER)
+		time.sleep(1)
 		#The page updates again, and now shows both items on her list
-
+		self.check_for_row_in_list_table('1:Buy peacock feathers')
+		self.check_for_row_in_list_table('2:Use peacock feathers to make a fly')
 		#Edith wonders whether the site will  remember her list.
 		#Then she sees that the site has generated a unique url for her --
 		#There is some explanatory text to the effect
-
+		self.fail('finish the test')
 		#she visits that url -her to-do list is still there
 
 		#satisfied ,she goes back to sleep
