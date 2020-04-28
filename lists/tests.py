@@ -2,7 +2,7 @@ from django.test import TestCase
 from django.urls import resolve
 from django.http import HttpRequest
 from lists.views import home_page#(2)
-from list.models import Item
+from lists.models import Item
 class ItemModelTest(TestCase):
 	def test_saving_and_retriveving_item(self):
 		first_item = Item()
@@ -18,8 +18,8 @@ class ItemModelTest(TestCase):
 		
 		first_saved_item = save_items[0]
 		second_saved_item = save_items[1]
-		self.assertEqual(first_saved_item_text,'The first (ever) list item')
-		self.assertEqual(second_saved_item,'Item the second')
+		self.assertEqual(first_saved_item.text,'The first (ever) list item')
+		self.assertEqual(second_saved_item.text,'Item the second')
 class HomePageTest(TestCase):
 # Create your tests here.
 	def test_home_page_returns_correct_html(self):
