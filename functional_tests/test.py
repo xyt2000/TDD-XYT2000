@@ -5,7 +5,8 @@ import time
 class NewVisitorTest(unittest.TestCase):#(1)
 	def setUp(self):#(3)
 		self.browser = webdriver.Firefox()
-
+	def test_can_start_a_list_and_retrive_it_later(self):
+		self.browser.get(self.live_server_url)
 	def tearDown(self):#(3)
 		self.browser.quit()
 		
