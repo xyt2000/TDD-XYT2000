@@ -2,10 +2,10 @@ from selenium import webdriver
 import unittest
 from selenium.webdriver.common.keys import Keys
 import time
-from django.test import LiveServerTestCase
+from django.contrib.staticfiles.testing import StaticLiveServerTestCase
 from selenium.common.exceptions import WebDriverException
 MAX_WAIT = 10 
-class NewVisitorTest(LiveServerTestCase):#(1)
+class NewVisitorTest(StaticLiveServerTestCase):#(1)
 	def setUp(self):#(3)
 		self.browser = webdriver.Firefox()
 	#def test_can_start_a_list_and_retrive_it_later(self):
