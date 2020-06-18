@@ -65,7 +65,7 @@ class NewVisitorTest(LiveServerTestCase):#(1)
 		#Edith wonders whether the site will  remember her list.
 		#Then she sees that the site has generated a unique url for her --
 		#There is some explanatory text to the effect
-		self.fail('finish the test')
+
 		#she visits that url -her to-do list is still there
 
 		#satisfied ,she goes back to sleep
@@ -108,4 +108,21 @@ class NewVisitorTest(LiveServerTestCase):#(1)
 		self.assertNotIn('Buy peacock feathers',page_text)
 		self.assertIn('Buy milk',page_text)
 		#satisfied they both go sleep
+	def test_layout_and_styling(self):
+		#Edith goes to the home page 
+		self.browser.get(self.live_server_url)
+		self.browser.set_window_size(1024,768)
+		#she notice the input box is nicely centered
+		inputbox = self.browser.find_element_by_id('id_new_item')
+		#she starts a new list and sees the input is nicely
+		#centered there too
+		inputbox.send_keys('testing')
+		inputbox.send_keys(Keys.ENTER)
+		self.wait_for_row_in_list_table('1:testing')
+		inputbox = self.browser.find_element_by_id('id_new_item')
+		self.assertAlmostEqual(
+			inputbox.location['x']+inputbox.size['width']/2,
+			512,
+			delta = 10
+		)
 
