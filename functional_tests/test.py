@@ -4,10 +4,14 @@ from selenium.webdriver.common.keys import Keys
 import time
 from django.contrib.staticfiles.testing import StaticLiveServerTestCase
 from selenium.common.exceptions import WebDriverException
+import os
 MAX_WAIT = 10 
 class NewVisitorTest(StaticLiveServerTestCase):#(1)
-	def setUp(self):#(3)
+	def setUp(self):
 		self.browser = webdriver.Firefox()
+		staging_server = '118.178.90.94'
+		if staging_server:
+			self.live_server_url = 'http://' + staging_server
 	#def test_can_start_a_list_and_retrive_it_later(self):
 	#	self.browser.get(self.live_server_url)
 	def tearDown(self):#(3)
